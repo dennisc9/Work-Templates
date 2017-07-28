@@ -1,0 +1,71 @@
+# MAC OSx generated files #
+##########################
+.DS_Store
+.DS_Store?
+*.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows #
+############
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+*.lnk
+$RECYCLE.BIN/
+
+# Node.js #
+###########
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+pids
+results
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.yarn-integrity
+node_modules/
+jspm_packages/
+.grunt
+
+# Bower #
+#########
+src/components
+
+## Sass #
+#########
+.sass-cache
+
+# FlashBuilder #
+################
+.actionScriptProperties
+.flexProperties
+.project
+.settings/*
+
+# AIR FILES #
+#############
+AIR/*
+
+# Dropbox #
+#############
+.dropbox
+.dropbox.attr
+.dropbox.cache

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>{{ meta.title }}</title>
+  
+  <meta name="description" content="{{ meta.description }}" />
+  <meta name="robots" content="NOODP, index, follow" />
+  <meta itemprop="name" content="{{ meta.title }}">
+  <meta itemprop="description" content="{{ meta.description }}">
+  <meta itemprop="image" content="{{ meta.image }}">
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="{{ meta.twitter_handle }}">
+  <meta name="twitter:title" content="{{ meta.title }}">
+  <meta name="twitter:description" content="{{ meta.description }}">
+  <meta name="twitter:creator" content="{{ meta.twitter_handle }}">
+  <meta name="twitter:image:src" content="{{ meta.twitter_image }}">
+  <meta name="twitter:domain" content="{{ meta.domain }}">
+  <!-- Open Graph data (Facebook) -->
+  <meta property="og:title" content="{{ meta.title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ meta.url }}/" />
+  <meta property="og:image" content="{{ meta.facebook_image }}" />
+  <meta property="og:description" content="{{ meta.description }}" />
+  <!-- Apple Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/img/favicon/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/favicon/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/favicon/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/favicon/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/img/favicon/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/img/favicon/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/img/favicon/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/img/favicon/apple-touch-icon-152x152.png" />
+  <!-- Standard Icons -->
+  <link rel="icon" type="image/png" href="/img/favicon/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/img/favicon/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="/img/favicon/favicon-128.png" sizes="128x128" />
+  <!-- Microsoft Metadata -->
+  <meta name="application-name" content="{{ meta.title }}"/>
+  <meta name="msapplication-TileColor" content="{{ meta.theme_color }}" />
+  <meta name="msapplication-TileImage" content="/img/favicon/mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="/img/favicon/mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="/img/favicon/mstile-150x150.png" />
+  <meta name="msapplication-wide310x150logo" content="/img/favicon/mstile-310x150.png" />
+  <meta name="msapplication-square310x310logo" content="/img/favicon/mstile-310x310.png" />
+  <!-- Android Chrome Theme Color -->
+  <meta name="theme-color" content="{{ meta.theme_color }}">
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <!-- BootStrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/style.min.css" inline>
+  <!-- Google Analytics go here ## make the last element in the <head> -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '{{ meta.google_analytics_id }}', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+<body>
+  <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="sr-only">Gulp Handlebars Template</span> <!-- for the screen reader only -->
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Gulp Handlebars Template</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/" target="_blank">Home</a></li>
+          <li><a href="/about" target="_blank">About</a></li>
+          <li><a href="/contact" target="_blank">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="masthead">
+          <img class="img-responsive" src="http://placehold.it/1200x350"/>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+    <div class="container text-center">
+      <div class="page-header">
+        <h1>Example page header <br> <small>Subtext for header</small></h1>
+      </div>
+      <hr>
+    </div>
+
+    <section class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="demo-content">
+            {{#block "main"}}{{/block}}
+          </div>
+        </div>
+      </div>
+    </section> <!-- end of .container -->
+  </main>
+
+  <footer>
+
+  </footer>
+</body>
+</html>

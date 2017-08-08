@@ -1,0 +1,11 @@
+{{!-- You do not actually have to extend default (as it is default but this is just to show you to extend others) --}}
+{{#extend "default" id="home"}}
+  
+  {{#content "header"}}
+    <h1>Example page header <br> <small>Subtext for header</small></h1>
+  {{/content}}
+
+  {{#content "main" mode="prepend"}}
+    Hellow World!
+  {{/content}}
+{{/extend}}

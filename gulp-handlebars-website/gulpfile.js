@@ -39,11 +39,12 @@ var yaml            = require('js-yaml'); // load yml template
 
 handlebars.Handlebars.registerHelper(layouts(handlebars.Handlebars));
 
-// Destination
+// Destination ~ note: if you use relative ./ it wont work in watch if you add new file
 var src={
-    root:"./src/",
-    sass:"./src/sass/",
-    js:"./src/js/"
+    root:"src/",
+    sass:"src/sass/",
+    js:"src/js/",
+    handlebars: "src/handlebars/"
 }
 
 var dist={
@@ -149,8 +150,8 @@ gulp.task('fonts', function() {
 gulp.task('templates', function() {
   var templateData = yaml.safeLoad(fs.readFileSync('data.yml', 'utf-8'));
   var options = {
-    ignorePartials: true, //ignores the unknown footer2 partial in the handlebars template, defaults to false
-    batch: ['./src/partials/'],
+    ignorePartials: false, //ignores the unknown footer2 partial in the handlebars template, defaults to false
+    batch: [src.handlebars+'layouts/', src.handlebars+'partials/'],
     helpers: {
       capitals: function(str) {
         return str.toUpperCase();
@@ -158,7 +159,7 @@ gulp.task('templates', function() {
     },
   };
 
-  return gulp.src('./src/templates/**/*.hbs')
+  return gulp.src(src.handlebars+'pages/**/*.hbs')
     .pipe(plumber())
     .pipe(handlebars(templateData, options))
     .pipe(rename(function(path) {
@@ -191,10 +192,10 @@ gulp.task('clean', function(cb) {
 gulp.task('deploy', ['build:optimized']);
 
 gulp.task('watch', function() {
-  gulp.watch(['./src/templates/**/*.hbs', './src/partials/**/*.hbs'], ['templates'], reload);
-  gulp.watch('./src/sass/**/*.scss', ['sass'], reload);
-  gulp.watch('./src/img/**/*', ['images'], reload);
-  gulp.watch(['./src/js/**/*.js', 'Gulpfile.js'], ['js'], reload);
+  gulp.watch([src.handlebars + 'pages/**/*.hbs', src.handlebars + 'layouts/**/*.hbs', src.handlebars + 'partials/**/*.hbs'], ['templates'], reload);
+  gulp.watch('src/sass/**/*.scss', ['sass'], reload);
+  gulp.watch('src/img/**/*', ['images'], reload);
+  gulp.watch(['src/js/**/*.js', 'Gulpfile.js'], ['js'], reload);
 });
 
 gulp.task('build', function (cb) {

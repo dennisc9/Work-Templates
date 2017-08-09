@@ -1,11 +1,33 @@
 {{!-- You do not actually have to extend default (as it is default but this is just to show you to extend others) --}}
 {{#extend "default" id="home"}}
   
-  {{#content "header"}}
+  {{#content header}}
+
+  {{/content}}
+  {{#content "h1"}}
     <h1>Example page header <br> <small>Subtext for header</small></h1>
   {{/content}}
 
   {{#content "main" mode="prepend"}}
-    Hellow World!
+    <section class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          Hellow World!
+        </div>
+      </div>
+    </section> <!-- end of .container -->
+
+    <section class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          {{> main-carousel}}
+        </div>
+      </div>
+    </section> <!-- end of .container -->
+
+  {{/content}}
+
+  {{#content "scripts"}}
+    <script src="js/index.js"></script>
   {{/content}}
 {{/extend}}

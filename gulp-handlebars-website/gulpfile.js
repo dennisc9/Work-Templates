@@ -44,8 +44,9 @@ var src={
     root:"src/",
     sass:"src/sass/",
     js:"src/js/",
+    jsLib:"src/js/lib/",
     handlebars: "src/handlebars/"
-}
+};
 
 var dist={
     root:"./dist/",
@@ -53,7 +54,7 @@ var dist={
     js:'./dist/js/',
     images: "./dist/img",
     fonts: "./dist/font"
-}
+};
 
 /* 
   SASS 
@@ -104,7 +105,7 @@ gulp.task('js:build', function() {
 });
 
 gulp.task('js:lint', function() {
-  return gulp.src([src.js+'**/*.js', '!./src/js/lib/**/*.js', 'Gulpfile.js'])
+  return gulp.src([src.js+'**/*.js', '!'+src.jsLib+'**/*.js', 'gulpfile.js'])
     .pipe(plumber())
     .pipe(jscs())
     .pipe(jshint())
@@ -195,7 +196,7 @@ gulp.task('watch', function() {
   gulp.watch([src.handlebars + 'pages/**/*.hbs', src.handlebars + 'layouts/**/*.hbs', src.handlebars + 'partials/**/*.hbs'], ['templates'], reload);
   gulp.watch('src/sass/**/*.scss', ['sass'], reload);
   gulp.watch('src/img/**/*', ['images'], reload);
-  gulp.watch(['src/js/**/*.js', 'Gulpfile.js'], ['js'], reload);
+  gulp.watch([src.js+'**/*.js', 'gulpfile.js'], ['js'], reload);
 });
 
 gulp.task('build', function (cb) {
@@ -232,10 +233,11 @@ gulp.task('default', ['serve']);
 
 /* 
   Handle Errors 
-*/
+
 function handleError(err)
 {
   console.log(err.toString());
   //this.emit('end');
   util.beep(3);
 }
+*/

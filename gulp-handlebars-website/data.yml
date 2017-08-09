@@ -4,8 +4,13 @@ meta:
   facebook_image: ""  # /img/facebook.png
   twitter_image: ""  # /img/twitter.png
   image: ""  # /img/share.png
-  twitter_handle: ""  # @minimill_co
-  domain: ""  # minimill.co
-  url: ""  # https://minimill.co
+  twitter_handle: ""  # @twitter
+  domain: ""  # thebloc.com
+  url: ""  # https://thebloc.com
   google_analytics_id: "" # UA-66637918-1
   theme_color: "" # #FFFFFF
+
+routing:
+  main_nav_link_0: "/"
+  main_nav_link_1: "/about"
+  main_nav_link_2: "/contact"

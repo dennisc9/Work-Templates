@@ -83,22 +83,17 @@
   <main role="main">
     <div class="container text-center">
       <div class="page-header">
-        {{#block "header"}}{{/block}}
+        {{#block "h1"}}{{/block}}
       </div>
       <hr>
     </div>
 
-    <section class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="demo-content">
-            {{#block "main"}}{{/block}}
-          </div>
-        </div>
-      </div>
-    </section> <!-- end of .container -->
+    {{#block "main"}}{{/block}}
+
+    
   </main>
 
   {{> global-footer}}
+  {{#block "scripts"}}{{/block}}
 </body>
 </html>

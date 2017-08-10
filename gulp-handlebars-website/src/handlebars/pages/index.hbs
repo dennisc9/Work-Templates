@@ -1,9 +1,10 @@
 {{!-- You do not actually have to extend default (as it is default but this is just to show you to extend others) --}}
 {{#extend "default" id="home"}}
   
-  {{#content header}}
-
+  {{#content "header"}}
+    {{> main-carousel}}
   {{/content}}
+
   {{#content "h1"}}
     <h1>Example page header <br> <small>Subtext for header</small></h1>
   {{/content}}
@@ -20,7 +21,7 @@
     <section class="container">
       <div class="row">
         <div class="col-xs-12">
-          {{> main-carousel}}
+          {{!-- {{> main-carousel}} --}}
         </div>
       </div>
     </section> <!-- end of .container -->

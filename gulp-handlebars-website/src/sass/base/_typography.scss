@@ -8,33 +8,35 @@ $type-light: 300;
 $font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 h1, %h1 {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   font-weight: $type-light;
   letter-spacing: 0.5px;
 }
 
 h2, %h2 {
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: $type-medium;
   letter-spacing: 4px;
-  line-height: 1;
   text-align: center;
   text-transform: uppercase;
 }
 
 h3, %h3 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   letter-spacing: 0.5px;
 }
 
 h4, %h4 {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   letter-spacing: 0.5px;
 }
 
 h5, %h5 {
-  font-size: 0.75rem;
+  font-size: 1.25rem;
   text-transform: uppercase;
+}
+h6, %h6{
+  font-size: 1rem;
 }
 
 p, .p {

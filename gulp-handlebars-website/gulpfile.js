@@ -66,7 +66,7 @@ gulp.task('sass:lint', function() {
 });
 
 gulp.task('sass:build', function() {
-  gulp.src(src.sass+'**/style.scss')
+  gulp.src(src.sass+'**/*.scss')
     .pipe(rename({suffix: '.min'}))
     .pipe(plumber())
     .pipe(sourcemaps.init())

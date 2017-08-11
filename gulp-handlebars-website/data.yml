@@ -10,7 +10,6 @@ meta:
   google_analytics_id: "" # UA-66637918-1
   theme_color: "" # #FFFFFF
 
-routing:
+router:
   main_nav_link_0: "/"
-  main_nav_link_1: "/about"
-  main_nav_link_2: "/contact"
+  main_nav_link_1: "/faqs"

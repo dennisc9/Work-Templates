@@ -1,8 +1,12 @@
 {{!-- You do not actually have to extend default (as it is default but this is just to show you to extend others) --}}
 {{#extend "default" id="home"}}
   
+  {{#content "styles"}}
+    <link rel="stylesheet" type="text/css" href="/css/pages/home.min.css">
+  {{/content}}
+
   {{#content "header"}}
-    {{> main-carousel}}
+    {{> header-carousel}}
   {{/content}}
 
   {{#content "h1"}}
@@ -18,14 +22,8 @@
       </div>
     </section> <!-- end of .container -->
 
-    <section class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          {{!-- {{> main-carousel}} --}}
-        </div>
-      </div>
-    </section> <!-- end of .container -->
-
+    {{> main-carousel}}
+    
   {{/content}}
 
   {{#content "scripts"}}

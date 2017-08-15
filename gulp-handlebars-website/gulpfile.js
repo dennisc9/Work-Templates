@@ -43,6 +43,7 @@ handlebars.Handlebars.registerHelper(layouts(handlebars.Handlebars));
 var src={
     root:"src/",
     sass:"src/sass/",
+    css:"src/css/",
     js:"src/js/",
     jsLib:"src/js/lib/",
     handlebars: "src/handlebars/"
@@ -92,6 +93,15 @@ gulp.task('sass:optimized', function() {
 
 gulp.task('sass', ['sass:lint', 'sass:build']);
 
+
+/* 
+  Already built CSS
+    NOTE: add a css:build that checks if it is a minified version already, if not minify it. 
+*/
+gulp.task('css', function(){
+  gulp.src(src.css+"*.css")
+    .pipe(gulp.dest(dist.css+"lib/"));
+});
 /* 
   JS
 */
@@ -197,15 +207,16 @@ gulp.task('watch', function() {
   gulp.watch('src/sass/**/*.scss', ['sass'], reload);
   gulp.watch('src/img/**/*', ['images'], reload);
   gulp.watch([src.js+'**/*.js', 'gulpfile.js'], ['js'], reload);
+  gulp.watch(src.css+'**/*.css', ['css'], reload);
 });
 
 gulp.task('build', function (cb) {
-  return runSequence('clean', ['sass', 'images', 'fonts', 'js', 'templates'], cb);
+  return runSequence('clean', ['sass', 'css', 'images', 'fonts', 'js', 'templates'], cb);
 });
 
 gulp.task('build:optimized', function(cb) {
   return runSequence('clean',
-    ['sass:optimized', 'images:optimized', 'fonts', 'js', 'templates:optimized'],
+    ['sass:optimized', 'css', 'images:optimized', 'fonts', 'js', 'templates:optimized'],
     cb);
 });
 

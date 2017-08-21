@@ -24,12 +24,40 @@
     </section> <!-- end of .container -->
 
     {{> main-carousel}}
+
+    <hr>
+
+    <section class="container">
+      <div class="row">
+        <div class="col-sm-10 offset-sm-1">
+          <div class="card-columns">
+            {{#each cards}}
+            
+              <div class="card" style="">
+                <img class="card-img-top img-fluid" src="{{image}}" alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title">{{title}}</h4>
+                  <p class="card-text">
+                   
+                    {{> (lookup . 'contentBloc') }}
+                  
+                  </p>
+                  <a href="#" class="btn-expand">Read-More</a>
+                  <a href="#" class="btn-close">(x)</a>
+                </div>
+              </div>
+            
+          
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </section>
     
   {{/content}}
 
   {{#content "scripts"}}
     <script type="text/javascript" src="/js/lib/slick.min.js"></script>
     <script src="js/index.js"></script>
-
   {{/content}}
 {{/extend}}

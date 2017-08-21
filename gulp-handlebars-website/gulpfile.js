@@ -9,10 +9,12 @@
 // Global
 var gulp            = require('gulp');
 var plumber         = require('gulp-plumber'); 
+var util            = require('gulp-util');
 var rename          = require('gulp-rename');
 var rimraf          = require('rimraf'); // remove (clean) dir
 var runSequence     = require('run-sequence');
 var sourcemaps      = require('gulp-sourcemaps');
+
 // Sync
 var browserSync     = require('browser-sync').create();
 var reload          = browserSync.reload;
@@ -30,14 +32,14 @@ var imagemin        = require('gulp-imagemin');
 // Templates / Handlebars
 var inlinesource    = require('gulp-inline-source');
 var fs              = require('fs');
-var handlebars      = require('gulp-compile-handlebars');
+var handlebars      = require('gulp-hb');
 var htmlmin         = require('gulp-htmlmin');
 var layouts         = require('handlebars-layouts');
 var path            = require('path');
 var replace         = require('gulp-replace');
 var yaml            = require('js-yaml'); // load yml template 
 
-handlebars.Handlebars.registerHelper(layouts(handlebars.Handlebars));
+//handlebars.Handlebars.registerHelper(layouts(handlebars.Handlebars));
 
 // Destination ~ note: if you use relative ./ it wont work in watch if you add new file
 var src={
@@ -46,7 +48,8 @@ var src={
     css:"src/css/",
     js:"src/js/",
     jsLib:"src/js/lib/",
-    handlebars: "src/handlebars/"
+    handlebars: "src/handlebars/",
+    data:"src/data/"
 };
 
 var dist={
@@ -158,11 +161,14 @@ gulp.task('fonts', function() {
 /*
   Templates AKA Handlebars
 */
-gulp.task('templates', function() {
-  var templateData = yaml.safeLoad(fs.readFileSync('data.yml', 'utf-8'));
+gulp.task('templates:old', function() {
+  //var templateData = yaml.safeLoad(fs.readFileSync('data.yml', 'utf-8'));
+  var templateData = requireJsons(["data"]);
+  //console.log(templateData);
+  var cardsData = require('./src/data/cards.json');
   var options = {
     ignorePartials: false, //ignores the unknown footer2 partial in the handlebars template, defaults to false
-    batch: [src.handlebars+'layouts/', src.handlebars+'partials/'],
+    batch: [src.handlebars+'layouts/', src.handlebars+'partials/', src.data],
     helpers: {
       capitals: function(str) {
         return str.toUpperCase();
@@ -179,6 +185,53 @@ gulp.task('templates', function() {
     .pipe(gulp.dest(dist.root));
 });
 
+// Advanced 
+ 
+gulp.task('templates', function () {
+  var hbStream = handlebars()
+    // Partials 
+    .partials('./src/handlebars/layouts/**/*.{hbs,js}')
+    .partials('./src/handlebars/partials/**/*.{hbs,js}')
+    .partials({
+      boo: '{{#each boo}}{{greet}}{{/each}}',
+      far: '{{#each far}}{{length}}{{/each}}'
+    })
+
+    // Helpers 
+    .helpers(require('handlebars-layouts'))
+    .helpers('./helpers/**/*.js')
+    //.helpers({
+      //foo: function () { ... },
+      //bar: function () { ... }
+    //})
+
+    // Decorators 
+    //.decorators('./decorators/**/*.js')
+    //.decorators({
+     // baz: function () { ... },
+      //qux: function () { ... }
+    //})
+
+    // Data 
+    .data('data.json')
+    .data('./src/data/**/*.{js,json}')
+    .data({
+      lorem: 'dolor',
+      ipsum: 'sit amet'
+    });
+
+  return gulp
+    .src(src.handlebars+'pages/**/*.hbs')
+    .pipe(plumber())
+    .pipe(hbStream)
+    .pipe(rename(function(path) {
+      path.extname = '.html';
+    }))
+    .pipe(gulp.dest(dist.root));
+});
+
+
+/* =-=-=-=-=-=-=-=-=-=-=---==-=-=-=-=-=-=-=-=-=-= */
 gulp.task('templates:optimized', ['templates'], function() {
   return gulp.src('./dist/**/*.html')
     .pipe(inlinesource())
@@ -190,6 +243,12 @@ gulp.task('templates:optimized', ['templates'], function() {
     .pipe(gulp.dest(dist.root));
 });
 
+function requireJsons(fileNames) {
+  return fileNames.reduce(function(jsons, fileName) {
+    jsons[fileName] = require(fileNames[i] + '.json');
+    return jsons;
+  }, {});
+}
 /*
   Tasks
 */
@@ -203,7 +262,7 @@ gulp.task('clean', function(cb) {
 gulp.task('deploy', ['build:optimized']);
 
 gulp.task('watch', function() {
-  gulp.watch([src.handlebars + 'pages/**/*.hbs', src.handlebars + 'layouts/**/*.hbs', src.handlebars + 'partials/**/*.hbs'], ['templates'], reload);
+  gulp.watch([src.handlebars + 'pages/**/*.hbs', src.handlebars + 'layouts/**/*.hbs', src.handlebars + 'partials/**/*.hbs', src.data+"**/*.json", "data.json"], ['templates'], reload);
   gulp.watch('src/sass/**/*.scss', ['sass'], reload);
   gulp.watch('src/img/**/*', ['images'], reload);
   gulp.watch([src.js+'**/*.js', 'gulpfile.js'], ['js'], reload);
@@ -244,11 +303,16 @@ gulp.task('default', ['serve']);
 
 /* 
   Handle Errors 
-
+*/
 function handleError(err)
 {
   console.log(err.toString());
   //this.emit('end');
   util.beep(3);
 }
-*/
+
+
+function errorHandler(error){
+  util.beep(3);
+  return true;
+}

@@ -49,7 +49,8 @@ var src={
     js:"src/js/",
     jsLib:"src/js/lib/",
     handlebars: "src/handlebars/",
-    data:"src/data/"
+    data:"src/data/",
+    images:"src/img/"
 };
 
 var dist={
@@ -131,7 +132,7 @@ gulp.task('js', ['js:lint', 'js:build']);
   Images
 */
 gulp.task('images', function() {
-  return gulp.src('src/img/**/*')
+  return gulp.src(src.images + '**/*')
     .pipe(plumber())
     .pipe(imagemin({
       progressive: true,
@@ -140,7 +141,7 @@ gulp.task('images', function() {
 });
 
 gulp.task('images:optimized', function() {
-  return gulp.src('src/img/**/*')
+  return gulp.src(src.images + '**/*')
     .pipe(plumber())
     .pipe(imagemin({
       progressive: true,

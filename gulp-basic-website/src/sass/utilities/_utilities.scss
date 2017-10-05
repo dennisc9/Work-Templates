@@ -1,0 +1,259 @@
+@import 'variables';
+@import 'mixins';
+@import 'positions';
+
+.black{
+  color:$color-black !important;
+}
+
+/* ==========================================================================
+   Flexbox Classes
+   ========================================================================== */
+.f-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-item--top {
+  align-self: flex-start;
+}
+.f-item--bottom {
+  align-self: flex-end;
+}
+
+.f-grid{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .f-col{
+    flex-grow: 1;
+    position:relative;
+    width:200px;
+    height:200px;
+    margin:5px 0;
+  }
+}
+
+/* 
+ * Columns
+ */
+.text-two-column{
+  column-count: 2;
+  column-gap: 30px;
+  columns: 2;
+}
+.text-three-column{
+  column-count: 3;
+  column-gap: 30px;
+  columns: 3;
+}
+
+
+@media only screen and (max-device-width: $size-laptop) {
+  .text-three-column{
+    column-count: 2;
+    column-gap: 30px;
+    columns: 2;
+  }
+
+}
+
+@media only screen and (max-device-width: $size-tablet) {
+  .text-three-column{
+    column-count: 1;
+    column-gap: 0px;
+    columns: 1;
+  }
+
+  .text-two-column{
+    column-count: 1;
+    column-gap: 0px;
+    columns: 1;
+  }
+
+}
+
+/* ==========================================================================
+   Helper Classes 
+   ========================================================================== */
+
+/* 
+ * Make element full width 
+ */
+.u-full-width {
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+/* 
+ * Make sure elements don't run outside containers (great for images in columns) 
+ */
+
+.u-max-full-width {
+  max-width: 100%;
+  box-sizing: border-box; 
+}
+
+/* 
+ * Float either direction 
+ */
+
+.u-pull-right {
+  float: right; 
+}
+.u-pull-left {
+  float: left; 
+}
+
+/* 
+ * Clear a float 
+ */
+
+.u-cf {
+  content: "";
+  display: table;
+  clear: both; 
+}
+
+/* 
+ * Clears a float by adding a pseudo element after 
+ */
+
+.u-cf-after{
+  &:after{
+    content: "";
+    display: table;
+    clear: both; 
+  }
+}
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden {
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after,
+    *:first-letter,
+    *:first-line {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+

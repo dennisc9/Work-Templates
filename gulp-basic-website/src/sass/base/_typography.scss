@@ -1,0 +1,67 @@
+// Font weights
+$type-extra-bold: 800;
+$type-bold: 700;
+$type-medium: 500;
+$type-regular: 400;
+$type-light: 300;
+
+$font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+h1, %h1 {
+  font-size: 2.5rem;
+  font-weight: $type-light;
+  letter-spacing: 0.5px;
+}
+
+h2, %h2 {
+  font-size: 2rem;
+  font-weight: $type-medium;
+  letter-spacing: 4px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+h3, %h3 {
+  font-size: 1.75rem;
+  letter-spacing: 0.5px;
+}
+
+h4, %h4 {
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+h5, %h5 {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+h6, %h6{
+  font-size: 1rem;
+}
+
+p, .p {
+  font-size: 1rem;
+}
+
+strong {
+  font-weight: $type-medium;
+}
+
+@media screen and (max-width: $phone-landscape-max) {
+  h1, %h1 {
+    font-size: 1.75rem;
+  }
+
+  h4, %h4 {
+    font-size: 1.5rem;
+  }
+}
+
+/* In type partial 
+@font-face {
+  font-family: 'custom';
+  src: url('url.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+*/

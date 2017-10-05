@@ -1,0 +1,44 @@
+$content-width: 58.75rem;
+
+header, main, footer, nav{
+  max-width:$size-max;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main{
+  padding: 1rem 0;
+}
+
+section{
+  padding: 0.5rem 0;
+}
+
+header{
+  margin-top:54px; // this is the size of the fixed header
+}
+
+main{
+  width:100%;
+  background-color:#eee;
+}
+
+.content {
+  @include clearfix;
+  margin: 0 auto;
+  max-width: $content-width;
+  padding: 0 0.625rem;
+  width: 90%;
+}
+
+@media screen and (max-width: $phone-landscape-max) {
+  .content {
+    padding: 0;
+    width: 100%;
+  }
+
+  section {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}

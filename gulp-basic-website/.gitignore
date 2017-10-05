@@ -1,0 +1,4 @@
+# Just for this folder, the true gitignore is in the root directory
+
+dist
+dist/*

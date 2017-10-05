@@ -153,7 +153,7 @@ gulp.task('html', function () {
 gulp.task('html:optimized', function(){
   return gulp.src(src.html)
     .pipe(gulp.dest(dist.root));
-})
+});
 
 /*
   Fonts
